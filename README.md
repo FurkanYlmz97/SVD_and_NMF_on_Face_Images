@@ -4,7 +4,7 @@ The purpose of this study is to compare matrix factorization techniques through 
 
 Dataset had been divided in to test and train set. I have seen that the dataset should be formed in a way which each column represents a picture. To do that each picture should be read by OpenCV as one channel and then the image matrix (19x19) should be flattened. These flattened vectors then concatenated together to create the matrix X which has the shape 361x2429 where there are 2429 different pictures in train set and 361 comes from the multiplication 19*19.
 
-**Singular Value Decomposition (SVD)**
+# Singular Value Decomposition (SVD)
 
 First, I have used the Python library NumPy for SVD to extract the U and V matrixes with the singular values. Afterwards I have plotted the singular values as follows.
 
