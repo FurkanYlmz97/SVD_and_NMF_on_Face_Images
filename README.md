@@ -4,7 +4,8 @@ The purpose of this study is to compare matrix factorization techniques through 
 
 Dataset had been divided in to test and train set. I have seen that the dataset should be formed in a way which each column represents a picture. To do that each picture should be read by OpenCV as one channel and then the image matrix (19x19) should be flattened. These flattened vectors then concatenated together to create the matrix X which has the shape 361x2429 where there are 2429 different pictures in train set and 361 comes from the multiplication 19*19.
 
-# Singular Value Decomposition (SVD)
+
+## Singular Value Decomposition (SVD)
 
 First, I have used the Python library NumPy for SVD to extract the U and V matrixes with the singular values. Afterwards I have plotted the singular values as follows.
 
@@ -28,7 +29,8 @@ From these figures it can be seen that as we use more singular values and the co
 
 The importance rates of features are also ordered, which means the first feature is the most important one and the second one is the second most important feature. As the number indicating which column the feature corresponds to, the importance of the feature decreases. The first feature therefore is the most important feature which looks like a sketch of a face. It is not a particular face, but It seems this is roughly how all faces are structured. Note that these features are not localized features but distributed features because they hold information about the whole of the image. For example, this feature has dark and bright parts, but the darks values are not equal to 0. That means when we multiply this with a weight the output is not 0 which means dark areas also hold information. Furthermore, U matrix is not non-negative valued, and the features are also not non-negative valued. As mentioned before this means the dark areas that we see in the picture is not 0 but mainly negative and holds information. 
 
-**Non-negative Matrix Factorization (NMF)**
+
+## Non-negative Matrix Factorization (NMF)
 
 First, I have coded the Hals algorithm with the Two-Block Coordinate Descend algorithm according to the given pseudo codes. 
 
@@ -63,7 +65,7 @@ Lastly, I have plotted the 9 columns of the W matrix, i.e., the extracted featur
 The W matrix and therefore the features are all non-negative due to the max operation we use in the training steps. That means the black areas we see in these feature pictures are equal to 0. That means these features do not hold information on some points. No matter with what weight we multiply this matrix those areas will be equal to 0, this is another way of showing that these features do not have information in some areas. Thus, these features are localized features they only hold information in some regions. For example, 8th feature is mainly responsible with having information only on the right side of a face. Whereas 9th feature is the opposite of it.
 
 
-**Image Recovery from Noisy Data**
+## Image Recovery from Noisy Data
 
 For this part I have first read the test set and added uniform noise as specified in the homework. I have than plotted the first picture with different noise levels as following. 
 
@@ -83,9 +85,10 @@ From these figures we can see that the SVD error is mainly smaller than the NMF 
 
 Also, we can see that the learned features from the train dataset is able to reconstruct denoised images from noised images until a point, because the error is decreasing for all figures. Furthermore, we can see that NMF error curve is not smooth, i.e., there are points were even the rank increases the error does not decrease, my guess is the used algorithm sometimes converges/stops to a better point for lower values of rank than high value of rank value. Overall, the two error curves decrease as the used rank value increases. Furthermore, we can see by comparing these figures the error increases as we increase the noise values. This also as expected because as the noise increases the combination of learned features of the train dataset and the noisy images does not result in a noisier output image. Also, from the error curves we can see that the decrease in the error also slows down as rank increases. So, it is not always reasonable to not use a high rank value if we want to reconstruct a Matrix. A value between 20 and 40 can be used as effective rank for this dataset if we want to have a low rank value. 
 
-**Image Recovery from Masked Data**
+## Image Recovery from Masked Data
 
 For this part I have first masked the images from test-set that is I have entry-wised multiplied the images with a matrix S which is defined as following.
+
 ![image](https://user-images.githubusercontent.com/48417171/120926661-815c0000-c6e6-11eb-9061-776300aac29b.png)
 
 I have examined that the shadow masked images have a shadow in the right side of the image. Two examples are as following. 
