@@ -45,9 +45,11 @@ Note that U^((l))is the U after l iteration. I have run the Hals algorithm and t
 
 
 Hals Update - Error vs Iteration Curve
+
 ![image](https://user-images.githubusercontent.com/48417171/120926434-89677000-c6e5-11eb-9121-496640e72365.png)
 
 From the Paper "The Why and How of Nonnegative Matrix Factorization", figure 3
+
 ![image](https://user-images.githubusercontent.com/48417171/120926445-94ba9b80-c6e5-11eb-8825-3b9a6d9034ba.png)
 
 From the first figure we can see that my algorithm is able to minimize the error function indicates that it can learn features from the dataset. Also, the curve of Hals in both algorithms looks so similar. The difference is that the error is lower in the second figure but we cannot compare the values because the error metrics are different. However, we can compare the shapes of the curves and they are remarkably similar. This curve indicates that with small number of iterations our algorithm is able to extract nice features. To make the error smaller after some specific number of iterations the algorithm needs a much more time/iteration, where the error gets smaller slowly. 
